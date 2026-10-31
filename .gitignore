@@ -1,0 +1,27 @@
+# Environment
+.env
+.env.*
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Backend
+backend/.env
+backend/.venv/
+backend/__pycache__/
+backend/**/*.pyc
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/terraform.tfvars
+terraform/*.tfvars
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store

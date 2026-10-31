@@ -1,0 +1,16 @@
+export const S = {
+  wrapPx: "clamp(16px,4vw,40px)",
+  wrapPy: "clamp(24px,5vmin,48px)",
+  sectionGap: "clamp(24px,5vmin,40px)",
+  cardGap: "clamp(12px,2.2vmin,22px)",
+  cardPx: "clamp(20px,3vmin,28px)",
+  cardPy: "clamp(18px,2.8vmin,24px)",
+  cardRadius: "24px",
+  titleFs: "clamp(18px,2.2vmin,24px)",
+  subFs: "clamp(12px,1.5vmin,14px)",
+  statValueFs: "clamp(22px,2.7vmin,26px)",
+  statSubFs: "clamp(11px,1.4vmin,13px)",
+  chartTitleFs: "clamp(14px,1.8vmin,18px)",
+  chartHeight: 260,
+  logoW: "clamp(32px,5vmin,52px)",
+};

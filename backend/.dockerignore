@@ -1,0 +1,57 @@
+# Git
+.git
+.gitignore
+.github
+
+# Secret / Environment files
+.env
+.env.*
+**/.env
+**/.env.*
+secrets.json
+credentials.json
+service-account*.json
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+
+# Python
+venv/
+.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# Database / backup
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.backup
+dbdata/
+postgres_data/
+
+# Logs
+*.log
+
+# Frontend
+FrontEnd-main/node_modules/
+FrontEnd-main/dist/
+FrontEnd-main/.env
+FrontEnd-main/.env.*
+FrontEnd-main/src.zip
+
+# Misc
+.DS_Store
+Thumbs.db
