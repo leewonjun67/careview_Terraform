@@ -1,0 +1,49 @@
+name: Backend Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-deploy.yml"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6.3.0
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and push Docker image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY }}
+        run: |
+          docker build \
+            -f backend/Dockerfile.ec2 \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY:latest \
+            backend
+
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+
+      - name: Start Auto Scaling instance refresh
+        run: |
+          aws autoscaling start-instance-refresh \
+            --auto-scaling-group-name "${{ vars.ASG_NAME }}" \
+            --preferences '{"MinHealthyPercentage":0,"InstanceWarmup":120}'
