@@ -20,17 +20,8 @@ def create_app() -> FastAPI:
         # 로컬 개발
         "http://localhost:3000",
         "http://localhost:5173",
-
-        # 기존 프런트 배포 주소
-        "https://careview-front.onrender.com",
-        "https://careview.kro.kr",
-        "https://www.careview.kro.kr",
-
-        # 기존 S3 정적 웹사이트 주소
-        "http://careview-front-bucket.s3-website.ap-northeast-2.amazonaws.com",
-
-        # 현재 CloudFront 프런트엔드 주소
-        "https://d18nlrjzbq5l8h.cloudfront.net",
+        "https://www.careview.p-e.kr",
+       
     ]
 
     app.add_middleware(
